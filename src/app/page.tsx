@@ -1,11 +1,13 @@
 "use client";
-import FooterComponent from './Footer'
+import FooterComponent from "./Footer";
 import NavigationBar from "./navigationbar";
 import Image from "next/image";
 import PricingCard, { PricingCardProps } from "./PricingCard";
 
-const pricingData:any =
- [
+import { helix } from "ldrs";
+import { grid } from "ldrs";
+
+const pricingData: any = [
   {
     id: 1,
     title: "Starter",
@@ -44,6 +46,9 @@ const pricingData:any =
   },
 ];
 export default function Home() {
+  helix.register();
+
+  grid.register();
   return (
     <>
       <NavigationBar />
@@ -63,14 +68,16 @@ export default function Home() {
               backend development
             </p>
           </div>
-          <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <Image
-              src="/next-JS-framework.png"
-              alt="mockup"
-              width="700"
-              height="500"
-            />
-          
+          <div
+            className="hidden lg:mt-0 lg:col-span-5 lg:flex"
+            style={{
+              backgroundImage: `url('/next-JS-framework.png')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundClip: "content-box",
+            }}
+          >
+            <l-helix size="200" speed="4.5" color="white"></l-helix>
           </div>
         </div>
       </section>
@@ -254,24 +261,26 @@ export default function Home() {
         <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
-
               <span className="block text-primary-700 dark:text-primary-400">
-              Your cybersecurity journey starts here.
+                Your cybersecurity journey starts here.
               </span>
             </h1>
             <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-            Build cybersecurity talent from within.
+              Build cybersecurity talent from within.
             </p>
           </div>
           <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <video 
+            <video
               className="w-full rounded-lg shadow-lg"
               controls
               autoPlay={false}
               loop
               muted
             >
-              <source src="https://videos.pexels.com/video-files/5474270/5474270-sd_640_338_25fps.mp4" type="video/mp4" />
+              <source
+                src="https://videos.pexels.com/video-files/5474270/5474270-sd_640_338_25fps.mp4"
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -279,12 +288,12 @@ export default function Home() {
       </section>
       <section className="bg-[url('https://s30876.pcdn.co/wp-content/uploads/Career-Connections-1170x630.jpg.optimal.jpg')]">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-       
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
             let&apos;s get you connected to potential customers!
           </h1>
           <p className="mb-8 text-lg font-normal text-gray-700 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            We help you connect with potential customers and partners through our network of industry experts.
+            We help you connect with potential customers and partners through
+            our network of industry experts.
           </p>
           <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
             <a
@@ -305,17 +314,11 @@ export default function Home() {
                 ></path>
               </svg>
             </a>
-         
           </div>
-          <div className="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36 ">
-            
-          
-          </div>
+          <div className="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36 "></div>
         </div>
       </section>
-      <PricingCard
-      data={pricingData as any}
-      />
+      <PricingCard data={pricingData as any} />
       <FooterComponent />
     </>
   );
