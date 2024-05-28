@@ -1,11 +1,10 @@
 "use client";
 import FooterComponent from "./Footer";
 import NavigationBar from "./navigationbar";
-import Image from "next/image";
-import PricingCard, { PricingCardProps } from "./PricingCard";
 
-import { helix } from "ldrs";
-import { grid } from "ldrs";
+import PricingCard, { PricingCardProps } from "./PricingCard";
+import { useEffect, useState } from "react";
+
 
 const pricingData: any = [
   {
@@ -46,6 +45,19 @@ const pricingData: any = [
   },
 ];
 export default function Home() {
+
+  const [helix, setHelix] = useState<any>(null);
+  const [grid, setGrid] = useState<any>(null);
+
+  useEffect(() => {
+    import("ldrs").then((module) => {
+      setHelix(module.helix);
+      setGrid(module.grid);
+    })
+  },[])
+
+  if(!helix || !grid) return null;
+
   helix.register();
 
   grid.register();
